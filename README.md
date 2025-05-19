@@ -57,6 +57,7 @@ This assessment's purpose is to develop SQL queries that address various busines
      \[
      CLV = \left(\frac{Total\ Transactions}{Tenure\ (months)}\right) \times 12 \times 0.1\% \times Avg\_Transaction\_Amount
      \
+   - To prevent division by zero, use `NULLIF()` within the tenure calculation.
 -  **Sorting Results:**
    - Order the output by `estimated_clv` in descending order.
 ---
