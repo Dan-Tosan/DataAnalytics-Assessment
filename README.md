@@ -56,14 +56,28 @@ This assessment's purpose is to develop SQL queries that address various busines
    - Apply the CLV formula as specified:
      \[
      CLV = \left(\frac{Total\ Transactions}{Tenure\ (months)}\right) \times 12 \times 0.1\% \times Avg\_Transaction\_Amount
-     \]
-   - To prevent division by zero, use `NULLIF()` within the tenure calculation.
+     \
 -  **Sorting Results:**
    - Order the output by `estimated_clv` in descending order.
 ---
+### Challenges Encountered
 
+#### 1. Incorrect Assumption about Data Structure  
+Initially, I assumed that the field `is_regular_savings` was located in the `savings_savingsaccount` table. This led to confusion when identifying savings and investment plans. 
+
+**Solution:**  
+After thoroughly reviewing the database schema, I discovered that both `is_regular_savings` and `is_a_fund` were located in the `plans_plan` table instead. The query was updated accordingly to use the correct table and fields.
+
+#### 2. Performance Optimization  
+The initial query execution took a significant amount of time due to the complex calculations and the large volume of transaction data, resulting in a "Lost connection to MySQL server" error.
+
+**Solution:** 
+The following optimizations were made:
+- Applied filtering conditions directly within the join clauses to minimize the data processed.  
+- Reduced the use of complex nested functions, which significantly improved the query execution speed.  
+---
 ## Conclusion
 
-These queries provide actionable insights for business decisions, such as identifying high-value customers, flagging inactive accounts, estimating CLV, and categorizing customer transaction frequency. By optimizing data joins and using efficient SQL functions, we minimized processing time and ensured accurate results.
+These queries provide actionable insights for business decisions, such as identifying high-value customers, categorizing customer transaction frequency, flagging inactive accounts, and estimating CLV. By optimizing data joins and using efficient SQL functions, I minimized processing time and ensured accurate results.
 
 For more details on each query, check the respective SQL files in the repository.
